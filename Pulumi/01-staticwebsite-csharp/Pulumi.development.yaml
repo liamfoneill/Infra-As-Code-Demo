@@ -1,0 +1,6 @@
+encryptionsalt: v1:jbUkvtO5aSk=:v1:sZtNE9ASMjP0dHJx:SoydMmC8vqftMdGfgUQrJawgBFIJcA==
+config:
+  01-staticwebsite-csharp:errorDocument: error.html
+  01-staticwebsite-csharp:indexDocument: index.html
+  01-staticwebsite-csharp:path: ./www
+  azure-native:location: westeurope
