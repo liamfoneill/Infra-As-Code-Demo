@@ -10,10 +10,21 @@ steps:
   displayName: Terraform Install
   inputs:
     terraformVersion: 'latest'
-
+- task: Bash@3
+  displayName: Set ENV Variables
+  inputs:
+    targetType: 'inline'
+    script: |
+      export ARM_CLIENT_ID=$(ARM_CLIENT_ID)
+      export ARM_CLIENT_SECRET=$(ARM_CLIENT_SECRET)
+      export ARM_SUBSCRIPTION_ID=$(ARM_SUBSCRIPTION_ID)
+      export ARM_TENANT_ID=$(ARM_TENANT_ID)
 - task: Bash@3
   displayName: Terraform Init
   inputs:
     targetType: 'inline'
     script: 'terraform init -input=false'
     workingDirectory: './Terraform/03-modules/'
+    arguments: 
+    bashEnvValue: 
+
