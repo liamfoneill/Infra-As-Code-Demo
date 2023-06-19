@@ -15,4 +15,4 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'terraform init'
-    workingDirectory: '/Terraform/03-modules/'
+    workingDirectory: './Terraform/03-modules/'
