@@ -91,7 +91,7 @@ stages:
         condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
         displayName: 'Create Plan Artifact'
         inputs:
-          rootFolderOrFile: '$(project_folder)'
+          rootFolderOrFile: './Terraform/03-modules/'
           includeRootFolder: false
           archiveType: 'tar'
           tarCompression: 'gz'
