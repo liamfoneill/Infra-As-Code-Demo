@@ -12,13 +12,15 @@ steps:
     terraformVersion: 'latest'
 - task: Bash@3
   displayName: Terraform Init
+  env:
+    ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+    ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+    ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
+    ARM_TENANT_ID: $(ARM_TENANT_ID)
   inputs:
     targetType: 'inline'
     script: |
-      export ARM_CLIENT_ID=$(ARM_CLIENT_ID)
-      export ARM_CLIENT_SECRET=$(ARM_CLIENT_SECRET)
-      export ARM_SUBSCRIPTION_ID=$(ARM_SUBSCRIPTION_ID)
-      export ARM_TENANT_ID=$(ARM_TENANT_ID)
-      terraform init -input=false
+      terraform init \
+        -input=false
     workingDirectory: './Terraform/03-modules/'
 
