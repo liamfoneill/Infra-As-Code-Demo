@@ -96,3 +96,11 @@ resource "azurerm_storage_account" "example" {
     environment = "${var.environment}"
   }
 }
+
+output "virtual_network_name" {
+  value = azurerm_virtual_network.example.name
+}
+
+output "storage_account_name" {
+  value = azurerm_storage_account.example.name
+}
