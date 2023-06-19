@@ -11,10 +11,8 @@ steps:
   inputs:
     terraformVersion: 'latest'
 
-- task: AzureCLI@2
+- task: Bash@3
   inputs:
-    azureSubscription: 'Online(afe07a9d-e6de-4b4c-91eb-3ae7265a9245)'
-    scriptType: 'bash'
-    scriptLocation: 'inlineScript'
-    inlineScript: 'terraform init'
-    workingDirectory: './Terraform/03-modules/'
+    targetType: 'inline'
+    script: 'terraform init'
+    workingDirectory: '/Terraform/03-modules/'
