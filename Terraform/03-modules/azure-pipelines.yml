@@ -56,3 +56,26 @@ steps:
       terraform providers
     workingDirectory: './Terraform/03-modules/'
 
+- task: Bash@3
+  name: 'terraform_plan'
+  displayName: 'Terraform Plan'
+  env:
+    ARM_CLIENT_ID: $(AZURE_CLIENT_ID)
+    ARM_CLIENT_SECRET: $(AZURE_CLIENT_SECRET)
+    ARM_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
+    ARM_TENANT_ID: $(AZURE_TENANT_ID)
+  inputs:
+    targetType: 'inline'
+    workingDirectory: './Terraform/03-modules/'
+    script: |
+      set -euo pipefail
+
+      if [ ${BUILD_REASON} == 'PullRequest' ]; then
+        export TF_CLI_ARGS="-lock=false"
+      fi
+
+      terraform plan \
+        -input=false \
+        -var="resource_group_name=${AZURE_ENV_RG}" \
+        -out ${BUILD_BUILDNUMBER}.tfplan
+
