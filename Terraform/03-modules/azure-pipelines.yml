@@ -20,6 +20,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      echo "Initialise"
       terraform init \
         -input=false
     workingDirectory: './Terraform/03-modules/'
