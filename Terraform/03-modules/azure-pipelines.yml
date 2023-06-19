@@ -11,7 +11,10 @@ steps:
   inputs:
     terraformVersion: 'latest'
 
-- task: TerraformTaskV4@4
+- task: Bash@3
   inputs:
-    provider: 'azurerm'
-    command: 'init'
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
+      terraform init
