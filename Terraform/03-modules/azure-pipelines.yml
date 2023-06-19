@@ -6,13 +6,9 @@ pool:
 
 steps:
 
-- task: TerraformInstaller@1
-  displayName: Terraform Install
-  inputs:
-    terraformVersion: 'latest'
-
 - task: AzureCLI@2
   inputs:
+    addSpnToEnvironment: true
     azureSubscription: 'Online(afe07a9d-e6de-4b4c-91eb-3ae7265a9245)'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
